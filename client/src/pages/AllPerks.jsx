@@ -86,7 +86,11 @@ export default function AllPerks() {
       })
       
       // Update perks state with response data
-      setPerks(res.data.perks)
+  // Debug: log how many perks were returned by the API to help tests
+  // diagnose timing or response-shape issues.
+  // eslint-disable-next-line no-console
+  console.log('AllPerks.loadAllPerks returned', Array.isArray(res.data.perks) ? res.data.perks.length : typeof res.data.perks);
+  setPerks(res.data.perks)
       
     } catch (err) {
       // Handle errors (network failure, server error, etc.)
